@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/DB_CAMWATCH
+    username: gopresenceadmin
+    password: Nsg2*J3O5CfU
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format-sql: true
+
+  security:
+    jwt:
+      token:
+        secret-key: b846f70bbab8c4f998751d35d11e8fac127743538886f6e07a4da2320b47cac295f3b009e849372974688b660e5782be28ffa4ae380b700c263498e5a2d1b8f983d02620d04f2c9381349b9e3fa2a7eb2062487b2a183ea961bf4b719e3b13dc98d95a9f247a5ce7b7cbd1115fa1d8d840d0b109374c28c6bebd82c6857eb48409d0fdb2d9982a9da8b553289f401e5abafe6426e23b7c98f8208d707d4deb2f709a55c5067e8c4e011eda0143299490386f6e0e3ae7b2abc767ad891f14954ab91da44ba5f751d976374c3fb03c574d8d810fbfd5673a26453b501ef4b759527c7c16b3c2c7aeeffbdcadbccaab4d3a1a853c27fd61cf5075b4986a49d16470

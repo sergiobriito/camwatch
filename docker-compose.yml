@@ -1,7 +1,8 @@
 version: '3'
 services:
   api:
-    build: .
+    build:
+      context: ./camwatch-server
     ports:
       - "8080:8080"
     depends_on:

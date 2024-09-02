@@ -1,3 +1,4 @@
 main-server-url: "http://ec2-34-232-70-4.compute-1.amazonaws.com:8080/api/v1/cam-watch/devices"
 get-usb-device-script: "get-usb-device.ps1"
-user-id: "87a954c8-7333-4731-8be1-4a1795423140"
+user-id: "3e89d7ff-2856-4e2a-a5f1-f66e6226ea60"
+device-local: "GoPresence - PC"

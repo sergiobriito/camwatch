@@ -35,19 +35,19 @@ class DeviceServiceImpl:
                 print("Error during device save:", e)
 
     def run_ping(self):
-        devices = []
-        try:
-            devices = get_usb_device()
-            if not devices:
-                print("Devices not recognized")
-                time.sleep(30)
-                return
-        except FileNotFoundError as e:
-            print(e)
-            return
         while True:
+            devices = []
+            try:
+                devices = get_usb_device()
+                if not devices:
+                    print("Devices not recognized")
+                    time.sleep(10)
+                    return
+            except FileNotFoundError as e:
+                print(e)
+                return
             self.ping(devices)
-            time.sleep(30)
+            time.sleep(10)
 
     def ping(self, devices):
         for device in devices:
@@ -58,7 +58,6 @@ class DeviceServiceImpl:
                 response = requests.post(f"{self.main_server_url}/ping", data=payload, headers={'Content-Type': 'application/json'})
                 response.raise_for_status()
                 print(f"Response from server: {response.text} - {time.strftime('%H:%M:%S')}")
-                time.sleep(5)
             except (RequestException, json.JSONDecodeError) as e:
                 print("Error during device ping:", e)
 

@@ -1,6 +1,5 @@
 import tkinter as tk
 from threading import Thread
-import time
 import sys
 from device_service import DeviceServiceImpl
 
@@ -9,6 +8,7 @@ def start_service():
         device_service = DeviceServiceImpl()
         device_service.register()
         device_service.run_ping()
+
     except FileNotFoundError as e:
         print(f"Error: {e}")
         sys.exit(1)

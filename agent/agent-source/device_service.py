@@ -15,10 +15,20 @@ class DeviceServiceImpl:
             raise FileNotFoundError("Configuration file not found")
 
     def register(self):
-        devices = get_usb_device()
+        devices = []
+        try:
+            devices = get_usb_device()
+            if not devices:
+                print("Devices not recognized")
+                time.sleep(30)
+                return
+        except FileNotFoundError as e:
+            print(e)
+            return
         for device in devices:
             try:
-                response = requests.post(f"{self.main_server_url}/save", data=device, headers={'Content-Type': 'application/json'})
+                payload = json.dumps(device)
+                response = requests.post(f"{self.main_server_url}/save", data=payload, headers={'Content-Type': 'application/json'})
                 response.raise_for_status()
                 print("Response:", response.text)
             except RequestException as e:
@@ -48,6 +58,7 @@ class DeviceServiceImpl:
                 response = requests.post(f"{self.main_server_url}/ping", data=payload, headers={'Content-Type': 'application/json'})
                 response.raise_for_status()
                 print(f"Response from server: {response.text} - {time.strftime('%H:%M:%S')}")
+                time.sleep(5)
             except (RequestException, json.JSONDecodeError) as e:
                 print("Error during device ping:", e)
 

@@ -146,9 +146,11 @@ function checkToken() {
 
 function deleteDevice(deviceId, rowId, apiUrl) {
     checkToken();
+    const token = localStorage.getItem('sessionToken');
     fetch(`${apiUrl}/devices/delete/${deviceId}`, {
         method: 'DELETE',
         headers: {
+            'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
         }
     })

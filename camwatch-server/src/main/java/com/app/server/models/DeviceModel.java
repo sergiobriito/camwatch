@@ -27,6 +27,9 @@ public class DeviceModel {
     @Column(length = 50)
     private String firmwareVersion;
 
+    @Column(length = 100, name = "device_local")
+    private String deviceLocal;
+
     @Column(name = "user_id")
     private UUID userId;
 

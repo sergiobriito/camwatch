@@ -32,7 +32,7 @@ public interface DeviceRepository extends JpaRepository<DeviceModel, UUID> {
     void ping(@Param("id") UUID id);
 
     @Query(value = "SELECT \n" + //
-                        "IP,SERIAL_NUMBER,MODEL,STATUS,LAST_PING \n" + //
+                        "IP,SERIAL_NUMBER,MODEL,STATUS,LAST_PING,DEVICE_LOCAL \n" + //
                         "FROM Devices \n" + //
                         "LEFT JOIN Status ON (Devices.ID = Status.DEVICE_ID) \n" + //
                         "LEFT JOIN Users ON (Devices.user_id = Users.user_id) \n" + //

@@ -18,9 +18,10 @@ public class DeviceDto {
     private String firmwareVersion;
     @Size(max = 100)
     private String ip;
-    @NotNull(message = "Status cannot be null")
     @Size(max = 100)
     private String serialNumber;
+    @Size(max = 100)
+    private String deviceLocal;
     private String macAddress;
     private UUID userId;
 
@@ -63,6 +64,8 @@ public class DeviceDto {
     public void setMacAddress(String macAddress) {
         this.macAddress = macAddress;
     }
+
+    
 
 }
 

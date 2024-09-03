@@ -65,7 +65,13 @@ public class DeviceDto {
         this.macAddress = macAddress;
     }
 
-    
+    public String getDeviceLocal() {
+        return deviceLocal;
+    }
+
+    public void setDeviceLocal(String deviceLocal) {
+        this.deviceLocal = deviceLocal;
+    }
 
 }
 

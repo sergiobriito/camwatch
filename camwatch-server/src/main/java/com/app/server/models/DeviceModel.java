@@ -110,6 +110,14 @@ public class DeviceModel {
     public void setUserId(UUID userId) {
         this.userId = userId;
     }
+
+    public String getDeviceLocal() {
+        return deviceLocal;
+    }
+
+    public void setDeviceLocal(String deviceLocal) {
+        this.deviceLocal = deviceLocal;
+    }
     
     
 }

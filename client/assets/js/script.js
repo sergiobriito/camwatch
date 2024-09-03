@@ -14,7 +14,7 @@ async function initializePage() {
         const userId = localStorage.getItem('userId');
         const devices = await fetchDevices(config.API_URL, userId);
         const totalDevices = devices.length;
-        populateDeviceTable(devices);
+        populateDeviceTable(devices, config.API_URL);
         localStorage.setItem('totalDevices', totalDevices);
         document.getElementById('totalDevices').textContent = localStorage.getItem('totalDevices') || '0';
     } catch (error) {
@@ -46,21 +46,30 @@ async function fetchDevices(apiUrl, userId) {
     return response.json();
 }
 
-function populateDeviceTable(devices) {
+function populateDeviceTable(devices, apiUrl) {
     const tableBody = document.querySelector("#device-table tbody");
     devices.forEach(device => {
         const row = document.createElement("tr");
+
         device.forEach((item, index) => {
             const cell = document.createElement("td");
             if (index === 4) {
                 const formattedDate = formatDate(new Date(item));
                 cell.textContent = formattedDate;
+            } else if (index === 6) {
+                const deleteButton = document.createElement("button");
+                deleteButton.className = "btn btn-danger";
+                deleteButton.textContent = "Remover";
+                deleteButton.onclick = () => deleteDevice(item, row.id, apiUrl);
+                cell.appendChild(deleteButton);
             } else {
                 cell.textContent = item;
             }
             styleCell(cell);
             row.appendChild(cell);
         });
+
+        row.id = `row-${device[6]}`;
         tableBody.appendChild(row);
     });
 }
@@ -124,7 +133,6 @@ function isTokenExpired(token) {
     return decodedToken.exp < currentTime;
 }
 
-
 function checkToken() {
     const token = localStorage.getItem('sessionToken');
     if (!token) {
@@ -134,4 +142,27 @@ function checkToken() {
     if (isTokenExpired(token)) {
         logout();
     } 
+}
+
+function deleteDevice(deviceId, rowId, apiUrl) {
+    checkToken();
+    fetch(`${apiUrl}/devices/delete/${deviceId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            const row = document.getElementById(rowId);
+            if (row) {
+                row.remove();
+            }
+        } else {
+            console.error('Failed to delete the device.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 }

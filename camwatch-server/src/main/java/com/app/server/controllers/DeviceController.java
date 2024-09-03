@@ -100,4 +100,15 @@ public class DeviceController {
         return ResponseEntity.status(HttpStatus.OK).body(devices);
     }
 
+    @DeleteMapping("/delete/{id}")
+    @Transactional
+    public ResponseEntity<Object> deleteDevice(@PathVariable(value = "id") UUID id) {
+        Optional<DeviceModel> deviceModelOpt = deviceServiceImpl.findById(id);
+        if (!deviceModelOpt.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No device found with the provided ID.");
+        }
+        deviceServiceImpl.delete(id);
+        return ResponseEntity.status(HttpStatus.OK).body("Device deleted;");
+    }
+
 }

@@ -43,6 +43,10 @@ public class DeviceServiceImpl implements DeviceService {
         return savedDevice;
     }
 
+    public void delete(UUID id){
+        deviceRepository.deleteById(id);
+    };
+
     public void saveStatus(DeviceModel deviceModel) {
         deviceRepository.saveStatus(deviceModel.getId());
     }

@@ -1,6 +1,9 @@
 # GoPresence - Monitoramento
 
 ## Visão Geral
+
+![](gopresence-monitoramento.png)
+
 **GoPresence - Monitoramento** é um sistema centralizado de monitoramento e gerenciamento de câmeras. Ele oferece uma interface amigável para gerenciar dispositivos, visualizar seus status.
 ## Arquitetura
 O sistema é projetado com uma arquitetura multinível composta pelos seguintes componentes:

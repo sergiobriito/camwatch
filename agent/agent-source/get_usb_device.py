@@ -17,7 +17,6 @@ def get_usb_devices_windows():
         config = read_yaml_file("config.yml")
         script_path = config.get("get-usb-device-script")
         user_id = config.get("user-id")
-        device_local = config.get("device-local")
 
         result = subprocess.run(
             ["powershell.exe", "-ExecutionPolicy", "Bypass", "-File", script_path],
@@ -32,12 +31,12 @@ def get_usb_devices_windows():
         if devices[0] == '[':
             devices_list = json.loads(devices)
             for device in devices_list:
-                add_metadata(device, user_id, device_local)
+                add_metadata(device, user_id)
         else:
             devices_list = []
             devices_list.append(json.loads(devices))
             for device in devices_list:
-                add_metadata(device, user_id, device_local)
+                add_metadata(device, user_id)
         return devices_list
     
     except FileNotFoundError as e:
@@ -48,15 +47,15 @@ def get_usb_devices_windows():
         return "{}"
 
 
-def add_metadata(device, user_id, device_local):
+def add_metadata(device, user_id,):
     add_user_id(device, user_id)
-    add_device_local(device, device_local)
+    add_device_local(device)
 
 def add_user_id(device, user_id):
     device["userId"] = user_id
 
-def add_device_local(device, device_local):
-    device["deviceLocal"] = device_local
+def add_device_local(device):
+    device["deviceLocal"] = socket.gethostname()
 
 def get_local_ip():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)

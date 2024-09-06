@@ -11,6 +11,8 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/DB_CAMWATCH
       SPRING_DATASOURCE_USERNAME: gopresenceadmin 
       SPRING_DATASOURCE_PASSWORD: Nsg2*J3O5CfU
+    volumes:
+      - ./agent/agent.zip:/tmp/agent.zip
     networks:
       - internal_network
 

@@ -29,6 +29,7 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.POST, "/api/v1/cam-watch/devices/save").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/v1/cam-watch/devices/update").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/v1/cam-watch/devices/ping").permitAll()
+                .requestMatchers(HttpMethod.POST, "/api/v1/cam-watch/devices/download-agent").permitAll()
                 .anyRequest().authenticated()
             )
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);

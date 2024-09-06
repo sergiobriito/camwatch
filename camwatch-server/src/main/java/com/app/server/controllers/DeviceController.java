@@ -9,11 +9,16 @@ import com.app.server.services.implement.UserServiceImpl;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+
+import org.springframework.http.MediaType;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpHeaders;
 
+import java.io.File;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -110,5 +115,16 @@ public class DeviceController {
         deviceServiceImpl.delete(id);
         return ResponseEntity.status(HttpStatus.OK).body("Device deleted;");
     }
+
+    @GetMapping("/download-agent")
+    public ResponseEntity<FileSystemResource> downloadAgent() {
+        File file = new File("/tmp/agent.zip");
+        FileSystemResource resource = new FileSystemResource(file);
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + file.getName())
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .body(resource);
+    }
+
 
 }

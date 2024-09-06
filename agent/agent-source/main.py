@@ -14,7 +14,7 @@ def write_config(file_path, data):
         yaml.dump(data, file)
 
 def update_user_id():
-    config_file = "config.yml"
+    config_file = "configs/config.yml"
     config_data = read_config(config_file)
     current_user_id = config_data['user-id']
     new_user_id = simpledialog.askstring("Alterar User ID", f"User ID Atual: {current_user_id}\nNovo User ID:")

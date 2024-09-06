@@ -14,7 +14,7 @@ def get_usb_device():
 
 def get_usb_devices_windows():
     try:
-        config = read_yaml_file("config.yml")
+        config = read_yaml_file("configs/config.yml")
         script_path = config.get("get-usb-device-script")
         user_id = config.get("user-id")
 
@@ -22,7 +22,8 @@ def get_usb_devices_windows():
             ["powershell.exe", "-ExecutionPolicy", "Bypass", "-File", script_path],
             capture_output=True,
             text=True,
-            check=True
+            check=True,
+            creationflags=subprocess.CREATE_NO_WINDOW
         )
 
         devices = result.stdout.strip()
@@ -38,14 +39,12 @@ def get_usb_devices_windows():
             for device in devices_list:
                 add_metadata(device, user_id)
         return devices_list
-    
     except FileNotFoundError as e:
         print(f"Configuration file not found: {e}")
         return "{}"
     except subprocess.CalledProcessError as e:
         print(f"Error executing script: {e}")
         return "{}"
-
 
 def add_metadata(device, user_id,):
     add_user_id(device, user_id)

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>GoPresence - Sistema de monitoramento e gerenciamento centralizado de câmeras</title>
+  <link rel="icon" href="./assets/img/logo.png" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+  <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="g-sidenav-show bg-gray-200">
+  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-gradient-dark" id="sidenav-main">
+    <div class="sidenav-header">
+      <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+      <a class="navbar-brand m-1" href="/" target="_self">
+        <img src="../assets/img/logo.png" class="navbar-brand-img h-100" alt="main_logo">
+        <span class="ms-1 font-weight-bold text-white">GoPresence</span>
+      </a>
+    </div>
+    <hr class="horizontal light mt-0 mb-2">
+    <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-white active" href="/">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">table_view</i>
+            </div>
+            <span class="nav-link-text ms-1">Dispositivos</span>
+          </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link btn btn-primary text-white" href="javascript:void(0);" id="downloadAgent" aria-label="Download Agent">
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="material-icons opacity-10">download</i>
+              </div>
+              <span class="nav-link-text ms-1">Download - Agente de monitoriamento</span>
+            </a>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="javascript:void(0);" onclick="logout()">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">logout</i>
+            </div>
+            <span class="nav-link-text ms-1">Sair</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
+    <div class="container-fluid py-4">
+      <h2 class="ms-1 font-weight-bold text-black">Sistema de monitoramento e gerenciamento centralizado de câmeras</h2>
+      <br>
+      <button id="downloadAgent" class="btn btn-primary" aria-label="Download Agent">Download - Agente de monitoriamento</button>
+      <br>
+      <span class="ms-1 font-weight-bold text-black">User ID: </span> <span id="userID"></span>
+      <br>
+      <span class="ms-1 font-weight-bold text-black">Nº de Dispositivos: </span> <span id="totalDevices"></span>  
+      <div class="row">
+        <div class="col-12">
+          <div class="card my-4">
+            <div class="border-radius-lg pt-4 pb-3">
+              <h6 class="text-capitalize ps-3">Dispositivos</h6>
+              <table id="device-table" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>IP</th>
+                        <th>Número Serial</th>
+                        <th>Modelo</th>
+                        <th>Status</th>
+                        <th>Ping</th>
+                        <th>Local</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="footer py-4">
+      </footer>
+    </div>
+  </main>
+  
+  <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script src="../assets/js/material-dashboard.min.js?v=3.1.0"></script>
+</body>
+
+</html>

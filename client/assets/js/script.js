@@ -17,28 +17,21 @@ async function initializePage() {
         populateDeviceTable(devices, config.API_URL);
         localStorage.setItem('totalDevices', totalDevices);
         document.getElementById('totalDevices').textContent = localStorage.getItem('totalDevices') || '0';
-        document.getElementById("downloadAgent").addEventListener("click", downloadAgentFile(config.API_URL));
+        document.getElementById("downloadAgent").addEventListener("click", () => downloadAgentFile(config.API_URL));
     } catch (error) {
         console.error("Error initializing page:", error);
     }
 }
 
+
 function downloadAgentFile(apiUrl) {
-    fetch(`${apiUrl}/devices/download-agent`)
-        .then(response => response.blob()) 
-        .then(blob => {
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'agent';
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
-            window.URL.revokeObjectURL(url);
-        })
-        .catch(error => {
-            console.error('Error fetching the agent file:', error);
-        });
+    const downloadUrl = `${apiUrl}/devices/download-agent`;
+    console.log(downloadUrl);
+    const a = document.createElement('a');
+    a.href = downloadUrl;
+    a.download = 'agent';
+    document.body.appendChild(a);
+    a.click();
 }
 
 async function fetchConfig() {

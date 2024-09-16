@@ -3,6 +3,7 @@
 ## Visão Geral
 
 **CamWatch** é um sistema centralizado de monitoramento e gerenciamento de câmeras. Ele oferece uma interface amigável para gerenciar dispositivos, visualizar seus status.
+
 ## Arquitetura
 O sistema é projetado com uma arquitetura multinível composta pelos seguintes componentes:
 
@@ -42,10 +43,10 @@ O GoPresence utiliza o PostgreSQL como seu principal sistema de gerenciamento de
 ### Agente
 O agente CamWatch é um script Python que roda em dispositivos para coletar e enviar dados de volta ao servidor. Ele é responsável por:
 
-- **Registro do Dispositivo**: Registra o dispositivo no servidor GoPresence.
+- **Registro do Dispositivo**: Registra o dispositivo no servidor CamWatch.
 - **Monitoramento de Status**: Verifica periodicamente o status do dispositivo e o reporta ao servidor.
 
 #### Tecnologias Utilizadas
 - **Python 3.x**: A principal linguagem usada para desenvolver o agente.
-- **Requests Library**: Para fazer requisições HTTP ao servidor GoPresence.
+- **Requests Library**: Para fazer requisições HTTP ao servidor CamWatch.
 - **JSON**: Para serialização de dados e comunicação com o backend.

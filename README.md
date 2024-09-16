@@ -1,10 +1,8 @@
-# GoPresence - Monitoramento
+# CamWatch
 
 ## Visão Geral
 
-![](gopresence-monitoramento.png)
-
-**GoPresence - Monitoramento** é um sistema centralizado de monitoramento e gerenciamento de câmeras. Ele oferece uma interface amigável para gerenciar dispositivos, visualizar seus status.
+**CamWatch** é um sistema centralizado de monitoramento e gerenciamento de câmeras. Ele oferece uma interface amigável para gerenciar dispositivos, visualizar seus status.
 ## Arquitetura
 O sistema é projetado com uma arquitetura multinível composta pelos seguintes componentes:
 
@@ -42,7 +40,7 @@ O GoPresence utiliza o PostgreSQL como seu principal sistema de gerenciamento de
 - **Transações**: Garantem integridade e consistência dos dados.
 
 ### Agente
-O agente GoPresence é um script Python que roda em dispositivos para coletar e enviar dados de volta ao servidor. Ele é responsável por:
+O agente CamWatch é um script Python que roda em dispositivos para coletar e enviar dados de volta ao servidor. Ele é responsável por:
 
 - **Registro do Dispositivo**: Registra o dispositivo no servidor GoPresence.
 - **Monitoramento de Status**: Verifica periodicamente o status do dispositivo e o reporta ao servidor.

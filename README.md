@@ -1,52 +1,55 @@
 # CamWatch
 
-## Visão Geral
+## Overview
 
-**CamWatch** é um sistema centralizado de monitoramento e gerenciamento de câmeras. Ele oferece uma interface amigável para gerenciar dispositivos, visualizar seus status.
+**CamWatch** is a centralized camera monitoring and management system. It offers a user-friendly interface for managing devices and viewing their statuses.
 
-## Arquitetura
-O sistema é projetado com uma arquitetura multinível composta pelos seguintes componentes:
+## Architecture
+
+![CamWatch Architecture](CamWatch.png)
+
+The system is designed with a multi-tier architecture composed of the following components:
 
 - **Frontend**: HTML, CSS, JavaScript
-- **Backend**: Java com Spring Framework
-- **Banco de Dados**: PostgreSQL
-- **Agente**: Python
+- **Backend**: Java with Spring Framework
+- **Database**: PostgreSQL
+- **Agent**: Python
 
 ### Frontend
-O frontend é construído usando HTML, CSS e JavaScript. Ele fornece uma interface intuitiva para os usuários interagirem com o sistema. As principais funcionalidades incluem:
+The frontend is built using HTML, CSS, and JavaScript. It provides an intuitive interface for users to interact with the system. The main features include:
 
-- **Dashboard**: Exibe uma lista de dispositivos, seus status e outras informações relevantes.
-- **Gerenciamento de Usuários**: Gerencia sessões de usuários e autenticação.
-- **Design Responsivo**: Garante compatibilidade em vários dispositivos e tamanhos de tela.
+- **Dashboard**: Displays a list of devices, their statuses, and other relevant information.
+- **User Management**: Manages user sessions and authentication.
+- **Responsive Design**: Ensures compatibility across various devices and screen sizes.
 
-#### Tecnologias Utilizadas
-- **HTML5**: Estruturação das páginas da web.
-- **CSS3**: Estilização da interface do usuário.
-- **JavaScript**: Proporciona funcionalidades dinâmicas.
+#### Technologies Used
+- **HTML5**: For structuring web pages.
+- **CSS3**: For styling the user interface.
+- **JavaScript**: Enables dynamic functionalities.
 
 ### Backend
-O backend é desenvolvido usando Java com o Spring Framework. Ele lida com a lógica de negócios, interações com o banco de dados e comunicação com o frontend. O backend também fornece APIs para interação com o agente.
+The backend is developed using Java with the Spring Framework. It handles business logic, database interactions, and communication with the frontend. The backend also provides APIs for interaction with the agent.
 
-#### Principais Funcionalidades
-- **APIs RESTful**: Expõe endpoints para gerenciamento de dispositivos, autenticação de usuários e mais.
-- **Spring Boot**: Simplifica a configuração da aplicação com suporte a servidor embutido.
-- **Segurança**: Spring Security integrado para lidar com autenticação e autorização.
+#### Key Features
+- **RESTful APIs**: Exposes endpoints for device management, user authentication, and more.
+- **Spring Boot**: Simplifies application setup with embedded server support.
+- **Security**: Integrated with Spring Security to manage authentication and authorization.
 
-### Banco de Dados
-O GoPresence utiliza o PostgreSQL como seu principal sistema de gerenciamento de banco de dados. Ele armazena informações sobre usuários, dispositivos e seus status.
+### Database
+CamWatch uses PostgreSQL as its primary database management system. It stores information about users, devices, and their statuses.
 
-#### Principais Aspectos
-- **Design do Esquema**: Otimizado para recuperação rápida e armazenamento eficiente dos dados dos dispositivos.
-- **UUID**: Utilizado para identificação única de registros.
-- **Transações**: Garantem integridade e consistência dos dados.
+#### Key Aspects
+- **Schema Design**: Optimized for fast retrieval and efficient storage of device data.
+- **UUID**: Used for unique identification of records.
+- **Transactions**: Ensure data integrity and consistency.
 
-### Agente
-O agente CamWatch é um script Python que roda em dispositivos para coletar e enviar dados de volta ao servidor. Ele é responsável por:
+### Agent
+The CamWatch agent is a Python script that runs on devices to collect and send data back to the server. It is responsible for:
 
-- **Registro do Dispositivo**: Registra o dispositivo no servidor CamWatch.
-- **Monitoramento de Status**: Verifica periodicamente o status do dispositivo e o reporta ao servidor.
+- **Device Registration**: Registers the device with the CamWatch server.
+- **Status Monitoring**: Periodically checks the device’s status and reports it to the server.
 
-#### Tecnologias Utilizadas
-- **Python 3.x**: A principal linguagem usada para desenvolver o agente.
-- **Requests Library**: Para fazer requisições HTTP ao servidor CamWatch.
-- **JSON**: Para serialização de dados e comunicação com o backend.
+#### Technologies Used
+- **Python 3.x**: The primary language used for agent development.
+- **Requests Library**: For making HTTP requests to the CamWatch server.
+- **JSON**: For data serialization and communication with the backend.
